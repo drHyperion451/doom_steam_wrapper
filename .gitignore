@@ -1,0 +1,10 @@
+/base
+DOOM2.WAD
+dsda-doom*
+test
+*.ini
+Cargo.lock
+.DS_Store
+
+# Rust
+/target
