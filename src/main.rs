@@ -1,5 +1,6 @@
 use std::process::Command;
 use ini::Ini;
+use std::io::{self, Write, Read};
 
 fn main() {
     let ini_path = "wrapper.ini";
@@ -36,4 +37,13 @@ fn main() {
     if !output.stderr.is_empty() {
         eprintln!("{}", String::from_utf8_lossy(&output.stderr));
     }
+    // Add a pause before the program exits
+    pause();
+}
+
+fn pause() {
+    let mut stdout = io::stdout();
+    stdout.write(b"Press Enter to continue...").unwrap();
+    stdout.flush().unwrap();
+    io::stdin().read(&mut [0]).unwrap();
 }
